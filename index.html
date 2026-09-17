@@ -170,6 +170,21 @@
     </main>
   </div>
 
+  <script>
+    (function(){
+      const key='vdzSolarTriageSettingsV1';
+      const endpoint='https://script.google.com/macros/s/AKfycbzoDXhl-nEYSIq4lwHCzFB9lFnty4c9S_dGcHIvZtVfQjV88fJx6BiaAtW9NsxF8Gsrtg/exec';
+      try {
+        const current=JSON.parse(localStorage.getItem(key)||'{}');
+        if(!current.endpoint){
+          current.endpoint=endpoint;
+          localStorage.setItem(key,JSON.stringify(current));
+        }
+      } catch (_) {
+        localStorage.setItem(key,JSON.stringify({endpoint}));
+      }
+    })();
+  </script>
   <script src="app.js"></script>
 </body>
 </html>
