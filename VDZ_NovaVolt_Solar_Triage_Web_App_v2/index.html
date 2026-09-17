@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="description" content="Solar service pre-visit triage and field calibration app." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Solar Service Triage</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">VDZ Electrical Services LLC • NovaVolt Solutions Assignments</div>
+        <h1>Solar Triage</h1>
+        <p class="subtitle">Field-service triage for NovaVolt assignments and VDZ service calls.</p>
+      </div>
+      <div class="status-wrap">
+        <span id="onlineStatus" class="status-pill">Checking…</span>
+      </div>
+    </header>
+
+    <nav class="tabs" aria-label="App navigation">
+      <button class="tab active" data-tab="triage">New Triage</button>
+      <button class="tab" data-tab="calls">Saved Calls</button>
+      <button class="tab" data-tab="calibration">Calibration</button>
+      <button class="tab" data-tab="settings">Settings</button>
+    </nav>
+
+    <main>
+      <section id="triage" class="panel">
+        <div id="startPanel">
+          <div class="grid two">
+            <div class="field">
+              <label for="provider">Work provider / client</label>
+              <select id="provider">
+                <option selected>NovaVolt Solutions</option>
+                <option>VDZ Electrical Services LLC</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="customer">Customer name</label>
+              <input id="customer" placeholder="e.g., Luis Solis" />
+            </div>
+            <div class="field">
+              <label for="city">City</label>
+              <input id="city" placeholder="e.g., Mission, TX" />
+            </div>
+            <div class="field">
+              <label for="brand">System brand</label>
+              <select id="brand">
+                <option value="">Select brand</option>
+                <option>SolarEdge</option>
+                <option>Enphase</option>
+                <option>Tesla</option>
+                <option>Other / Unknown</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="kw">System size (kW)</label>
+              <input id="kw" type="number" step="0.1" min="0" placeholder="e.g., 6.3" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="reported">Reported issue / work-order note</label>
+            <input id="reported" placeholder="e.g., Inverter 1 communication fault" />
+          </div>
+          <button id="startBtn" class="primary">Start Smart Triage</button>
+        </div>
+
+        <div id="quizPanel" class="hidden">
+          <div class="path-row">
+            <span id="pathLabel" class="path-label">General triage</span>
+            <span id="stepLabel" class="muted"></span>
+          </div>
+          <div class="progress"><div id="progressBar" class="progress-bar"></div></div>
+          <h2 id="questionText" class="question"></h2>
+          <p id="questionHelp" class="muted"></p>
+          <div id="choiceList" class="choices"></div>
+          <div class="button-row">
+            <button id="backBtn" class="secondary">Back</button>
+            <button id="restartBtn" class="ghost">Start over</button>
+          </div>
+        </div>
+
+        <div id="resultPanel" class="hidden">
+          <div id="resultCard" class="result-card"></div>
+          <div class="button-row">
+            <button id="saveBtn" class="primary">Save Triage Call</button>
+            <button id="copyBtn" class="secondary">Copy Summary</button>
+            <button id="newBtn" class="ghost">New Customer</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="calls" class="panel hidden">
+        <div class="section-head">
+          <div>
+            <h2>Saved Calls</h2>
+            <p class="muted">Record the actual onsite diagnosis after each visit.</p>
+          </div>
+          <button id="syncCallsBtn" class="secondary small-btn">Sync now</button>
+        </div>
+        <div id="callList"></div>
+      </section>
+
+      <section id="calibration" class="panel hidden">
+        <h2>Calibration</h2>
+        <div class="metrics">
+          <div class="metric">
+            <div class="metric-num" id="metricCompleted">0</div>
+            <div class="metric-label">Completed outcomes</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num" id="metricAccuracy">0%</div>
+            <div class="metric-label">Overall match rate</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num" id="metricPending">0</div>
+            <div class="metric-label">Pending outcomes</div>
+          </div>
+        </div>
+        <div id="calibrationTable"></div>
+        <p class="footnote">After at least 3 completed calls in a predicted category, your own field history begins influencing future confidence scores.</p>
+      </section>
+
+      <section id="settings" class="panel hidden">
+        <h2>Settings & Cloud Sync</h2>
+        <p class="muted">The app always works locally. To keep the same history across phone and laptop, paste your Google Apps Script Web App URL below.</p>
+
+        <div class="field">
+          <label for="endpoint">Google Apps Script Web App URL</label>
+          <input id="endpoint" placeholder="https://script.google.com/macros/s/.../exec" />
+        </div>
+
+        <div class="button-row">
+          <button id="saveSettingsBtn" class="primary">Save Settings</button>
+          <button id="pushAllBtn" class="secondary">Push Local Records</button>
+          <button id="pullCloudBtn" class="secondary">Pull Cloud Records</button>
+        </div>
+
+        <hr />
+
+        <h3>Install on phone</h3>
+        <p class="muted">Once this app is hosted on an HTTPS website, open it in Safari or Chrome and use <strong>Add to Home Screen</strong>. It will open like an app and continue working offline.</p>
+
+        <div class="button-row">
+          <button id="installBtn" class="secondary hidden">Install App</button>
+        </div>
+
+        <hr />
+
+        <h3>Backup</h3>
+        <div class="button-row">
+          <button id="exportCsvBtn" class="secondary">Export CSV</button>
+          <button id="exportJsonBtn" class="secondary">Export JSON</button>
+          <label class="secondary file-btn">
+            Import JSON
+            <input id="importFile" type="file" accept=".json" hidden />
+          </label>
+        </div>
+
+        <p class="footnote">This triage tool gives a likely starting point, not a final diagnosis. Confirm all findings onsite and follow manufacturer, employer, and electrical-safety procedures.</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
