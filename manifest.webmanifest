@@ -1,11 +1,11 @@
 {
-  "name": "VDZ / NovaVolt Solar Service Triage",
+  "name": "NovaVolt Solar Service Triage",
   "short_name": "Solar Triage",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#0b1220",
   "theme_color": "#0f172a",
-  "description": "Solar service triage for NovaVolt Solutions assignments and VDZ service calls.",
+  "description": "Solar service triage for NovaVolt Solutions assignments.",
   "icons": [
     {
       "src": "icons/icon-192.png",
