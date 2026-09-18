@@ -1,5 +1,5 @@
 
-const CACHE='solar-triage-v2';
+const CACHE='solar-triage-v3';
 const ASSETS=['./','index.html','styles.css','app.js','manifest.webmanifest','icons/icon-192.png','icons/icon-512.png'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(
