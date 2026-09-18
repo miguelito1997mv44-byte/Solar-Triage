@@ -1,9 +1,9 @@
-# VDZ / NovaVolt Solutions Solar Service Triage PWA
+# NovaVolt Solutions Solar Service Triage PWA
 
 This folder is a deployable mobile web app (PWA).
 
 ## What it does
-- NovaVolt Solutions / VDZ work-provider tracking
+- NovaVolt Solutions assignment tracking
 - Smart branching phone triage
 - Customer / city / system brand / kW / reported issue
 - Likely fault family + confidence
