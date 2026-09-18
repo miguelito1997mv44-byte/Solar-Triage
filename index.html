@@ -4,20 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#0f172a" />
-  <meta name="description" content="Solar service pre-visit triage and field calibration app." />
+  <meta name="description" content="Solar service pre-visit triage and field calibration app for NovaVolt Solutions assignments." />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="apple-touch-icon" href="icons/icon-192.png" />
   <link rel="icon" href="icons/icon-192.png" />
   <link rel="stylesheet" href="styles.css" />
-  <title>Solar Service Triage</title>
+  <title>NovaVolt Solar Service Triage</title>
 </head>
 <body>
   <div class="app-shell">
     <header class="topbar">
       <div>
-        <div class="eyebrow">VDZ Electrical Services LLC • NovaVolt Solutions Assignments</div>
-        <h1>Solar Triage</h1>
-        <p class="subtitle">Field-service triage for NovaVolt assignments and VDZ service calls.</p>
+        <div class="eyebrow">NovaVolt Solutions</div>
+        <h1>Solar Service Triage</h1>
+        <p class="subtitle">Field-service triage for NovaVolt Solutions assignments.</p>
       </div>
       <div class="status-wrap">
         <span id="onlineStatus" class="status-pill">Checking…</span>
@@ -35,14 +35,6 @@
       <section id="triage" class="panel">
         <div id="startPanel">
           <div class="grid two">
-            <div class="field">
-              <label for="provider">Work provider / client</label>
-              <select id="provider">
-                <option selected>NovaVolt Solutions</option>
-                <option>VDZ Electrical Services LLC</option>
-                <option>Other</option>
-              </select>
-            </div>
             <div class="field">
               <label for="customer">Customer name</label>
               <input id="customer" placeholder="e.g., Luis Solis" />
@@ -168,6 +160,7 @@
         <p class="footnote">This triage tool gives a likely starting point, not a final diagnosis. Confirm all findings onsite and follow manufacturer, employer, and electrical-safety procedures.</p>
       </section>
     </main>
+    <footer class="footnote" style="padding:0 4px 18px;text-align:center;">Created by Miguel Valdez</footer>
   </div>
 
   <script>
