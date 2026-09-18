@@ -1,5 +1,5 @@
 /**
- * Google Apps Script backend for VDZ Solar Triage.
+ * Google Apps Script backend for NovaVolt Solar Triage.
  *
  * SETUP
  * 1) Create a blank Google Sheet.
